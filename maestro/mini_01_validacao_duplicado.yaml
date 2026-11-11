@@ -1,0 +1,30 @@
+appId: com.grupo8.contatos
+---
+# Mini-Flow 01: Validação de Campos Vazios e Bloqueio de Duplicidade
+- launchApp:
+    clearState: true
+
+# 1. Tenta salvar sem preencher nada
+- tapOn: "Salvar"
+- assertVisible: "Preencha todos os campos"
+
+# 2. Cadastra "Luiz Eduardo" pela primeira vez
+- tapOn: "Nome"
+- inputText: "Luiz"
+- tapOn: "Sobrenome"
+- inputText: "Eduardo"
+- hideKeyboard
+- tapOn: "Salvar"
+- assertVisible: "Contato salvo com sucesso!"
+- assertVisible: "Total: 1"
+
+# 3. Tenta cadastrar "Luiz Eduardo" novamente (deve bloquear duplicado)
+- tapOn: "Nome"
+- inputText: "Luiz"
+- tapOn: "Sobrenome"
+- inputText: "Eduardo"
+- hideKeyboard
+- tapOn: "Salvar"
+- assertVisible: "Contato já cadastrado!"
+- assertVisible: "Total: 1"
+- takeScreenshot: mini_01_duplicado

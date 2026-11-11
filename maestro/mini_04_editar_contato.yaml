@@ -1,0 +1,30 @@
+appId: com.grupo8.contatos
+---
+# Mini-Flow 04: Edição de Contato Existente
+- launchApp:
+    clearState: true
+
+# 1. Cadastra contato inicial
+- tapOn: "Nome"
+- inputText: "Lucas"
+- tapOn: "Sobrenome"
+- inputText: "Castro"
+- hideKeyboard
+- tapOn: "Salvar"
+- assertVisible: "Lucas Castro"
+
+# 2. Clica em Editar no card do contato
+- tapOn: "Editar"
+- assertVisible: "Editando: Lucas Castro"
+
+# 3. Altera a categoria para Trabalho e adiciona Telefone
+- tapOn: "Telefone"
+- inputText: "11999990000"
+- hideKeyboard
+- tapOn: "Trabalho"
+- tapOn: "Salvar"
+
+# 4. Verifica se atualizou sem duplicar (Total continua 1)
+- assertVisible: "Contato atualizado com sucesso!"
+- assertVisible: "Total: 1"
+- takeScreenshot: mini_04_edicao

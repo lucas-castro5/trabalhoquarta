@@ -1,0 +1,23 @@
+appId: com.grupo8.contatos
+---
+# Mini-Flow 05: Exclusão Individual e Zerar Lista Completa
+- launchApp:
+    clearState: true
+
+# 1. Carrega os 4 contatos do Grupo 8
+- tapOn: "Carregar Grupo 8"
+- assertVisible: "Total: 4"
+
+# 2. Exclui o primeiro contato da lista (Luiz Eduardo)
+- tapOn:
+    id: "btn-excluir-0"
+- assertVisible: "Contato removido!"
+- assertVisible: "Total: 3"
+- assertNotVisible: "Luiz Eduardo"
+
+# 3. Clica em "Zerar Lista" para remover todos os contatos restantes
+- tapOn: "Zerar Lista"
+- assertVisible: "Lista limpa com sucesso!"
+- assertVisible: "Total: 0"
+- assertVisible: "Nenhum contato cadastrado ainda"
+- takeScreenshot: mini_05_excluir_zerar

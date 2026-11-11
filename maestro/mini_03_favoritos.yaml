@@ -1,0 +1,21 @@
+appId: com.grupo8.contatos
+---
+# Mini-Flow 03: Favoritar Contatos e Filtrar Aba de Favoritos
+- launchApp:
+    clearState: true
+
+# 1. Carrega exemplos (Luiz Eduardo já vem favoritado -> Favoritos: 1)
+- tapOn: "Carregar Grupo 8"
+- assertVisible: "Favoritos: 1"
+
+# 2. Favorita mais um integrante (Lucas Santos)
+- tapOn:
+    id: "btn-favoritar-1"
+- assertVisible: "Favoritos: 2"
+
+# 3. Filtra apenas pela aba "Filtro: Favoritos"
+- tapOn: "Filtro: Favoritos"
+- assertVisible: "Luiz Eduardo"
+- assertVisible: "Lucas Santos"
+- assertNotVisible: "Jonathan Oliveira"
+- takeScreenshot: mini_03_favoritos

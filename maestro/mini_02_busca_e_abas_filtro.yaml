@@ -1,0 +1,30 @@
+appId: com.grupo8.contatos
+---
+# Mini-Flow 02: Teste de Busca em Tempo Real e Abas de Filtro por Categoria
+- launchApp:
+    clearState: true
+
+# 1. Carrega rapidamente os 4 integrantes do Grupo 8
+- tapOn: "Carregar Grupo 8"
+- assertVisible: "Contatos de exemplo carregados!"
+- assertVisible: "Total: 4"
+
+# 2. Filtra pela aba "Trabalho" (deve mostrar apenas Lucas Santos)
+- tapOn: "Filtro: Trabalho"
+- assertVisible: "Lucas Santos"
+- assertNotVisible: "Luiz Eduardo"
+
+# 3. Filtra pela aba "Faculdade" (deve mostrar Luiz Eduardo e Jonathan Oliveira)
+- tapOn: "Filtro: Faculdade"
+- assertVisible: "Luiz Eduardo"
+- assertVisible: "Jonathan Oliveira"
+- assertNotVisible: "Lucas Santos"
+
+# 4. Volta para "Todos" e testa a busca por texto
+- tapOn: "Filtro: Todos"
+- tapOn: "Buscar contato..."
+- inputText: "Jonathan"
+- hideKeyboard
+- assertVisible: "Jonathan Oliveira"
+- assertNotVisible: "Luiz Eduardo"
+- takeScreenshot: mini_02_busca_filtro
