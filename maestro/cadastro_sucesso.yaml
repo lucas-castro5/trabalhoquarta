@@ -1,0 +1,12 @@
+appId: com.grupo8.contatos
+---
+- launchApp
+- tapOn: "Nome"
+- inputText: "Luiz"
+- tapOn: "Sobrenome"
+- inputText: "Eduardo"
+- hideKeyboard
+- tapOn: "Salvar"
+- assertVisible: "Contato salvo com sucesso!"
+- assertVisible: "Luiz Eduardo"
+- takeScreenshot: cadastro_sucesso

@@ -1,0 +1,6 @@
+appId: com.grupo8.contatos
+---
+- launchApp
+- tapOn: "Salvar"
+- assertVisible: "Preencha todos os campos"
+- takeScreenshot: cadastro_erro

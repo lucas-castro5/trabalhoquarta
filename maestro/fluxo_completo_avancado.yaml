@@ -1,0 +1,70 @@
+appId: com.grupo8.contatos
+---
+# 1. Abre o app limpando o estado anterior
+- launchApp:
+    clearState: true
+
+# 2. Validação de erro (tentar salvar vazio e tentar salvar só com Nome)
+- tapOn: "Salvar"
+- assertVisible: "Preencha todos os campos"
+- tapOn: "Nome"
+- inputText: "Teste"
+- hideKeyboard
+- tapOn: "Salvar"
+- assertVisible: "Preencha todos os campos"
+- tapOn: "Limpar"
+
+# 3. Cadastra 1º Contato (Luiz Eduardo - Faculdade com Telefone)
+- tapOn: "Nome"
+- inputText: "Luiz"
+- tapOn: "Sobrenome"
+- inputText: "Eduardo"
+- tapOn: "Telefone"
+- inputText: "11987654321"
+- hideKeyboard
+- tapOn: "Faculdade"
+- tapOn: "Salvar"
+- assertVisible: "Contato salvo com sucesso!"
+- assertVisible: "Luiz Eduardo"
+- assertVisible: "Total: 1"
+
+# 4. Cadastra 2º Contato (Lucas Santos - Trabalho com Telefone)
+- tapOn: "Nome"
+- inputText: "Lucas"
+- tapOn: "Sobrenome"
+- inputText: "Santos"
+- tapOn: "Telefone"
+- inputText: "11999998888"
+- hideKeyboard
+- tapOn: "Trabalho"
+- tapOn: "Salvar"
+- assertVisible: "Lucas Santos"
+- assertVisible: "Total: 2"
+
+# 5. Testa a Busca / Filtro em tempo real
+- tapOn: "Buscar contato..."
+- inputText: "Luiz"
+- hideKeyboard
+- assertVisible: "Luiz Eduardo"
+- assertNotVisible: "Lucas Santos"
+- takeScreenshot: busca_filtrada
+
+# 6. Limpa a busca usando seletor por testID (id: input-busca)
+- tapOn:
+    id: "input-busca"
+- eraseText: 10
+- hideKeyboard
+- assertVisible: "Lucas Santos"
+- assertVisible: "Luiz Eduardo"
+
+# 7. Testa Favoritar um contato e verifica o contador de favoritos
+- tapOn: "Favoritar"
+- assertVisible: "★ Favorito"
+- assertVisible: "Favoritos: 1"
+- takeScreenshot: contato_favoritado
+
+# 8. Testa Excluir um contato e verifica atualização do contador
+- tapOn: "Excluir"
+- assertVisible: "Contato removido!"
+- assertVisible: "Total: 1"
+- takeScreenshot: fluxo_completo_avancado
