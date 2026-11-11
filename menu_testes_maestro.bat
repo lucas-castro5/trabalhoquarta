@@ -10,6 +10,9 @@ cls
 echo ===============================================================
 echo        MENU DE TESTES AUTOMATIZADOS MAESTRO - GRUPO 8
 echo ===============================================================
+echo Dispositivos conectados no momento (Emulador ou Celular USB):
+"C:\Android\Sdk\platform-tools\adb.exe" devices
+echo ===============================================================
 echo  [1] Basico: Cadastro com Sucesso (cadastro_sucesso.yaml)
 echo  [2] Basico: Cadastro com Erro Vazio (cadastro_erro.yaml)
 echo  -------------------------------------------------------------
